@@ -163,6 +163,14 @@ where
             inner,
         })
     }
+
+    /// Returns the inner sql::Pool
+    ///
+    /// For cases where tracing is not required, or where access to
+    /// sqlx-traits are needed, eg running migrations.
+    pub fn inner(&self) -> sqlx::Pool<DB> {
+        self.inner.clone()
+    }
 }
 
 /// Wrapper for a mutable SQLx connection reference with tracing attributes.
